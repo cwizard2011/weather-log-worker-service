@@ -92,7 +92,7 @@ namespace WorkerServiceProject
                             {
                                 var updatedItem = isExist.ToList()[0];
                                
-                                var update = new { read_count = updatedItem.read_count + 1, current_temperature = temp };
+                                var update = new { current_temperature = temp };
                                 string updateSerializedObj = JsonConvert.SerializeObject(update);
                                 var httpContent = new StringContent(updateSerializedObj);
                                 httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
