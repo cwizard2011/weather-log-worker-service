@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
 
@@ -41,6 +42,10 @@ namespace WorkerServiceProject
                 .UseWindowsService()
                 .ConfigureServices((hostContext, services) =>
                 {
+                    IConfiguration configuration = hostContext.Configuration;
+                    WorkerOptions options = configuration.GetSection("APIKey").Get<WorkerOptions>();
+
+                    services.AddSingleton(options);
                     services.AddHostedService<Worker>();
                 })
                 .UseSerilog();

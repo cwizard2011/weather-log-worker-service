@@ -14,13 +14,15 @@ namespace WorkerServiceProject
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        List<WeatherResponse> data = null;
+        private readonly WorkerOptions _option;
+        private List<WeatherResponse> data = null;
 
         private HttpClient client;
 
-        public Worker(ILogger<Worker> logger)
+        public Worker(ILogger<Worker> logger, WorkerOptions options)
         {
             _logger = logger;
+            _option = options;
         }
 
 
@@ -40,7 +42,7 @@ namespace WorkerServiceProject
             while (!stoppingToken.IsCancellationRequested)
             {
                 // Get Weather information for Lagos
-                var result = await client.GetAsync("http://api.openweathermap.org/data/2.5/weather?q=Lagos,ng&appid=69bfd861e624a0f5f359f0cd91a7e708");
+                var result = await client.GetAsync(String.Format("http://api.openweathermap.org/data/2.5/weather?q=Lagos,ng&appid={0}", _option.WeatherAPIKey));
 
                 if (result.IsSuccessStatusCode)
                 {
