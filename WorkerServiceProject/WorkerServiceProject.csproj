@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-WorkerServiceProject-19D3C27D-7E7D-4021-8B63-D62091427265</UserSecretsId>
-    <!-- <RuntimeIdentifiers>win10-x64;osx.10.11-x64;win7-x64;ubuntu.14.04-x64</RuntimeIdentifiers> -->
+    <RuntimeIdentifiers>win10-x64;osx.10.11-x64;win7-x64;ubuntu.14.04-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
